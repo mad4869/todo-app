@@ -18,23 +18,118 @@ The to-do app should have the following features:
 ![A flowchart image that explains how the program runs](https://i.imgur.com/Gfn3HWG.jpg)
 **START**
 
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
+1. The user creates an account if they do not have one already, then logs in.
+2. The user can add a new project or a new task
+3. The user can edit a project or a task
+4. The user can delete a project or a task
+5. The user can mark a task as done/finished, either by clicking a button or dragging the task
+6. The user can filter the task list by their respective project
 
 **END** 
 
 ## Demo
 https://mad4869.pythonanywhere.com
 
-## Code Explanation
 
+## ERD
+This app uses **PostgreSQL** as the database service. The structure of schema in the database is as the following:
+![Entity Relationship Diagram](https://i.imgur.com/3j3cnDl.png)
+
+## Installation
+### Prerequisite
+PostgreSQL, Python, and Node are installed on your local machine.
+### 1. Clone the repo
+```
+git clone https://github.com/mad4869/todo-app.git
+```
+### 2. Set up the enviromental variables
+Create an `.env` file in the root directory of the app and store the variables inside it.
+```
+FLASK_APP='run.py'
+FLASK_DEBUG=1
+ENVIRONMENT="development"
+SECRET_KEY="some_secret_key"
+
+POSTGRES_USER="postgres"
+POSTGRES_PASSWORD="password"
+POSTGRES_HOST="localhost"
+POSTGRES_PORT="5432"
+POSTGRES_DB="todo-db"
+
+JWT_SECRET_KEY="some_secret_key"
+```
+### 3. Create a virtual environment
+
+### 4. Install the dependencies
+Once you activated the virtual environment, install the app dependencies.
+```
+pip install -r requirements.txt
+npm install
+```
+### 5. Build the static assets
+The last step is to build the assets.
+```
+npm run build
+flask digest compile
+```
+### 6. Run the app
+```
+flask run
+```
+## Code Explanation
+### 1. Backend (Flask)
+The entrypoint of the app is `run.py` while the app directory is `todo`<br>Inside the `todo` module are the followings:
+<br>**__init.py\__:** Init file
+<br>**config.py:** App configuration
+<br>**extensions.py:** Init file for the app's support libraries. This app is using the following libraries:
+
+- `SQLAlchemy:` ORM
+- `flask-migrate:` to manage database migration
+- `flask-bcrypt:` to generate password hash
+- `flask-jwt-extended:` to do authentication and authorization using **JSON Web Token**
+- `flask-login:` to manage user session
+- `flask-static-digest:` to compile static assets
+
+**forms.py:** All forms used in the app. Using `flask-wtf` as the form library.
+<br>**models.py** The models to connect to the database using `SQLAlchemy`
+
+**routes**
+- api.py: Handling the routes that serve the data. The list of API endpoints can be viewed [here.](https://documenter.getpostman.com/view/11633108/2s93zH2eWg)
+- auth.py: Handling the routes for authentication
+- views.py: Handling the routes for rendering HTML templates
+
+**static**
+<br>All the static assets
+
+**templates**
+<br>HTML templates
+
+### 2. Frontend
+This app is using `webpack` to build the assets and insert them inside the `static` directory in the `todo` module. This app is also using `Tailwind CSS` as the CSS framework.
 
 ## Test Case
-
+### 1. User authentication
+![User login](https://i.imgur.com/Ixc7cnj.png)
+![User login successfully](https://i.imgur.com/5JaXSoY.png)
+### 2. Add a project and a task
+![Add a project](https://i.imgur.com/WwzITC6.png)
+![Add a task](https://i.imgur.com/RId6lOv.png)
+![Add a task successfully](https://i.imgur.com/KZLHtCg.png)
+### 3. Edit a project and a task
+![Edit a task](https://i.imgur.com/imdcaJm.png)
+![Edit a task successfully](https://i.imgur.com/3VogfZs.png)
+![Edit a project](https://i.imgur.com/JxqayPC.png)
+![Edit a project successfully](https://i.imgur.com/mQQVRGX.png)
+### 4. Delete a project and a task
+![Delete a task](https://i.imgur.com/gNxBkIP.png)
+![Delete a task successfully](https://i.imgur.com/8oGcSj1.png)
+![Delete a project](https://i.imgur.com/lzLTDln.png)
+![Delete a project successfully](https://i.imgur.com/EEgEbEN.png)
+### 5. Mark a task as finished/done
+![Mark a task as finished](https://i.imgur.com/bAVmoBx.png)
+### 6. Filter tasks by project
+![Filter tasks by project](https://i.imgur.com/l3ckRQK.png)
+![Filter tasks by project](https://i.imgur.com/JY5AF9m.png)
 
 ## Conclusion
 TODO is a simple to-do app that allows users to track their tasks or projects.<br>However, there are a few things that can be done to enhance the app:
