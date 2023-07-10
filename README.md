@@ -73,35 +73,38 @@ flask digest compile
 flask run
 ```
 ## Code Explanation
-### 1. Backend (Flask)
-The entrypoint of the app is `run.py` while the app directory is `todo`<br>Inside the `todo` module are the followings:
-<br>**__init.py\__:** Init file
-<br>**config.py:** App configuration
-<br>**extensions.py:** Init file for the app's support libraries. This app is using the following libraries:
+### 1. Backend
+The to-do app is built using the `Flask` framework. The entry point of the app is `run.py`, and the app directory is named `todo` Additionally, the app utilizes several supporting libraries, including:
+- `SQLAlchemy` for object-relational mapping (ORM).
+- `flask-migrate` to manage database migrations.
+- `flask-bcrypt` for generating password hashes.
+- `flask-jwt-extended` for authentication and authorization using JSON Web Tokens (JWT).
+- `flask-login` for managing user sessions.
+- `flask-static-digest` for compiling static assets.
+- `flask-wtf` for managing forms and their validation
 
-- `SQLAlchemy:` ORM
-- `flask-migrate:` to manage database migration
-- `flask-bcrypt:` to generate password hash
-- `flask-jwt-extended:` to do authentication and authorization using **JSON Web Token**
-- `flask-login:` to manage user session
-- `flask-static-digest:` to compile static assets
+Inside the todo module, the following files are present:
+- `__init__.py:` Initialization file.
+- `config.py:` App configuration.
+- `extensions.py:` Initialization file for the app's supporting libraries.
+- `forms.py:` Contains all the forms used in the app.
+- `models.py:` Defines the models used to connect to the database.
 
-**forms.py:** All forms used in the app. Using `flask-wtf` as the form library.
-<br>**models.py** The models to connect to the database using `SQLAlchemy`
+The `todo` module also includes the following directories:
 
 **routes**
-- api.py: Handling the routes that serve the data. The list of API endpoints can be viewed [here.](https://documenter.getpostman.com/view/11633108/2s93zH2eWg)
-- auth.py: Handling the routes for authentication
-- views.py: Handling the routes for rendering HTML templates
+- `api.py:` Handling the routes that serve the data. The list of API endpoints can be viewed [here.](https://documenter.getpostman.com/view/11633108/2s93zH2eWg)
+- `auth.py:` Handling the routes for authentication.
+- `views.py:` Handling the routes for rendering HTML templates.
 
 **static**
-<br>All the static assets
+<br>Contains all the static assets (e.g., CSS, JavaScript, images).
 
 **templates**
-<br>HTML templates
+<br>Contains HTML templates used for rendering web pages.
 
 ### 2. Frontend
-This app is using `webpack` to build the assets and insert them inside the `static` directory in the `todo` module. This app is also using `Tailwind CSS` as the CSS framework.
+This app utilizes `webpack` to build the assets and insert them into the `static` directory within the `todo` module. Additionally, the app utilizes `Tailwind CSS` as the CSS framework.
 
 ## Test Case
 ### 1. User authentication
