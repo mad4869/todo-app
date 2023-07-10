@@ -18,12 +18,12 @@ The to-do app should have the following features:
 ![A flowchart image that explains how the program runs](https://i.imgur.com/Gfn3HWG.jpg)
 **START**
 
-1. The user creates an account if they do not have one already, then logs in.
-2. The user can add a new project or a new task
-3. The user can edit a project or a task
-4. The user can delete a project or a task
-5. The user can mark a task as done/finished, either by clicking a button or dragging the task
-6. The user can filter the task list by their respective project
+1. The user creates an account if they don't already have one, then logs in.
+2. The user can add a new project or task.
+3. The user can edit a project or task.
+4. The user can delete a project or task.
+5. The user can mark a task as done/finished, either by clicking a button or dragging the task.
+6. The user can filter the task list by their respective project.
 
 **END** 
 
@@ -32,18 +32,16 @@ https://mad4869.pythonanywhere.com
 
 
 ## ERD
-This app uses **PostgreSQL** as the database service. The structure of schema in the database is as the following:
+This app utilizes **PostgreSQL** as the database service. The structure of the schema in the database is as follows:
 ![Entity Relationship Diagram](https://i.imgur.com/3j3cnDl.png)
 
 ## Installation
-### Prerequisite
-PostgreSQL, Python, and Node are installed on your local machine.
 ### 1. Clone the repo
 ```
 git clone https://github.com/mad4869/todo-app.git
 ```
 ### 2. Set up the enviromental variables
-Create an `.env` file in the root directory of the app and store the variables inside it.
+Create a new file named `.env` in the root directory of the app. Then, inside the `.env` file, add the required variables:
 ```
 FLASK_APP='run.py'
 FLASK_DEBUG=1
@@ -58,16 +56,14 @@ POSTGRES_DB="todo-db"
 
 JWT_SECRET_KEY="some_secret_key"
 ```
-### 3. Create a virtual environment
-
+Replace the example variables with the corresponding actual values as needed.
+### 3. Create a virtual environment (optional)
 ### 4. Install the dependencies
-Once you activated the virtual environment, install the app dependencies.
 ```
 pip install -r requirements.txt
 npm install
 ```
 ### 5. Build the static assets
-The last step is to build the assets.
 ```
 npm run build
 flask digest compile
