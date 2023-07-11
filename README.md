@@ -68,7 +68,13 @@ npm install
 npm run build
 flask digest compile
 ```
-### 6. Run the app
+### 6. Connect to the database
+```
+flask db init
+flask db migrate
+flask db upgrade
+```
+### 7. Run the app
 ```
 flask run
 ```
