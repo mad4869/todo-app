@@ -93,9 +93,9 @@ Inside the todo module, the following files are present:
 The `todo` module also includes the following directories:
 
 **routes**
-- `api.py:` Handling the routes that serve the data. The list of API endpoints can be viewed [here.](https://documenter.getpostman.com/view/11633108/2s93zH2eWg)
-- `auth.py:` Handling the routes for authentication.
-- `views.py:` Handling the routes for rendering HTML templates.
+- `api:` Handling the routes that serve the data. The list of API endpoints can be viewed [here.](https://documenter.getpostman.com/view/11633108/2s93zH2eWg)
+- `auth:` Handling the routes for authentication.
+- `views:` Handling the routes for rendering HTML templates.
 
 **static**
 <br>Contains all the static assets (e.g., CSS, JavaScript, images).
